@@ -8,7 +8,7 @@ fi
 
 # Start the tunnel
 if [ -f $PWD/config.yml ]; then
-    sed -i 's:PORT:'$PORT':' -e 's:NGROK_API_TOKEN:'$NGROK_API_TOKEN':' config.yml
+    sed -i 's:PORT:'$PORT':' -e 's:NGROK_API_TOKEN:'$NGROK_API_TOKEN':' $PWD/config.yml
     ngrok_cmd="ngrok start -config $PWD/config.yml --all"
 else
     ngrok_cmd=".heroku/bin/ngrok ${NGROK_COMMAND:-"http"} --log stdout --log-level debug ${NGROK_OPTS} ${port}"
